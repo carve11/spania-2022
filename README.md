@@ -1,2 +1,2 @@
 # spania-2022
-Cykeltur til Spania 2022, test af GitHub pages
+Bike trip in northern Spain in 2022. Test using GitHub pages with an `index` page.
