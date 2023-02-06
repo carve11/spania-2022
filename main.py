@@ -56,7 +56,7 @@ def create_start_end_data(route_meta_data, route_df):
     meta_data_df.loc[m, 'marker'] = 'square'
     meta_data_df.loc[m, 'color'] = 'red'
 
-    meta_data_df = meta_data_df.groupby('stage').apply(
+    meta_data_df = meta_data_df.groupby('stage', group_keys = False).apply(
         lambda df: add_xy(df, route_df)
         )
 
