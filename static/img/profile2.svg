@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="bjerg_profil.svg"
+   inkscape:export-filename="../../../programmering/python/spania_2022/static/img/minus.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview8439"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="14.638496"
+     inkscape:cx="7.7876853"
+     inkscape:cy="30.296828"
+     inkscape:window-width="1387"
+     inkscape:window-height="1205"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid8562" />
+  </sodipodi:namedview>
+  <defs
+     id="defs8434" />
+  <g
+     inkscape:label="Lag 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 1.0246954,16.372024 5.8066075,-6.079859 3.0740863,4.098781"
+       id="path10952" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 8.4025025,12.341555 12.911162,7.6279566 22.884865,16.372024"
+       id="path10954" />
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+{% block preamble %}
+  <link href="static/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="static/js/functions.js"></script>
+{% endblock %}
+{% block contents %}
+<div class="container">
+  <h1>
+    Biketrip in Northern Spain 2022
+  </h1>
+  <p>
+    In September 2022 we were a small group of enthusiastic road bike riders who did a trip in Northern Spain. We covered a total of 827 km and 15,800 meters of ascending, which was split into 8 stages. A great guy and friend of us drove a van as our support vehicle and we stayed in hotels during the nights where those accommodations had been planned in advance (one stop-over was private accommodation, friends to one in the group). Every third day was a rest day. With start in Vegadeo and finishing in Unquera, we were mainly in the Asturias community, but also went into León to the south and Cantabria to the east. 
+  </p>
+  <div class="map-container outline">
+    {{ embed(roots.map) }}
+    <div class="btn-group">
+      <button id="zoom-in" class="map-btn" onclick="zoomBtnClick(this.id)">
+        <img src="static/img/plus.png" alt="Profile">
+        <span class="tooltip">Zoom in</span>
+      </button>
+      <button id="zoom-out" class="map-btn" onclick="zoomBtnClick(this.id)">
+        <img src="static/img/minus.png" alt="Profile">
+        <span class="tooltip">Zoom out</span>
+      </button>
+      <button id="reset" class="map-btn" onclick="resetBtnClick()">
+        <img src="static/img/reset.png" alt="Profile">
+        <span class="tooltip">Reset</span>
+      </button>
+    </div>
+  </div>
+  <div>
+    <p>
+      Plot below shows the elevation profile of either the whole trip, or an individual stage. One can select a stage for viewing either by clicking on the stage on the map above or the individual stages below. Observe that the elevations are from bike computer GPS files, hence they might not match 100% to actual elevations. 
+    </p>
+    <div class="outline">
+      <h5 class="elevation-plot-heading"></h5>
+      {{ embed(roots.elevation) }}
+    </div>
+  </div>
+  <div class="stages-layout">
+    {% for stage, data in stages.items() %}
+    <p class="stage-header" stageid="{{ stage }}">
+      {{ stage }}: {{ data.start }} to {{ data.finish }} - {{ data.distance }} km
+    </p>
+    <div class="stage-layout">
+      <p class="column">
+        Total ascent: {{ "{:,}".format(data.ascent) }} m<br> 
+        Total decent: {{ "{:,}".format(data.decent) }} m<br>
+        Highest elevation: {{ "{:,}".format(data.max_elevation) }} msl<br>
+        Lowest elevation: {{ "{:,}".format(data.min_elevation) }} msl
+      </p>
+      <span class="align-center">
+        <button id="profile" class="profile-btn" onclick="showProfile('{{ stage }}')" >
+          <img src="static/img/profile2_filled.svg" alt="Profile">
+        </button>
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

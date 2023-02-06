@@ -1,0 +1,58 @@
+{
+    "Stage 1": {
+        "stage_no": 1,
+        "gpx_file": "Etappe1.gpx",
+        "name": "Stage 1",
+        "start": "Vegadeo",
+        "finish": "Moal"
+    },
+    "Stage 2": {
+        "stage_no": 2,
+        "gpx_file": "Etappe2.gpx",
+        "name": "Stage 2",
+        "start": "Moal",
+        "finish": "Valseco"
+    },
+    "Stage 3": {
+        "stage_no": 3,
+        "gpx_file": "Etappe3.gpx",
+        "name": "Stage 3",
+        "start": "Valseco",
+        "finish": "La Plaza, Teverga"
+    },
+    "Stage 4": {
+        "stage_no": 4,
+        "gpx_file": "Etappe4.gpx",
+        "name": "Stage 4",
+        "start": "La Plaza, Teverga",
+        "finish": "Villamanín"
+    },
+    "Stage 5": {
+        "stage_no": 5,
+        "gpx_file": "Etappe5.gpx",
+        "name": "Stage 5",
+        "start": "Villamanín",
+        "finish": "Puebla de Lillo"
+    },
+    "Stage 6": {
+        "stage_no": 6,
+        "gpx_file": "Etappe6.gpx",
+        "name": "Stage 6",
+        "start": "Puebla de Lillo",
+        "finish": "Cangas de Onís"
+    },
+    "Stage 7": {
+        "stage_no": 7,
+        "gpx_file": "Etappe7.gpx",
+        "name": "Stage 7",
+        "start": "Cangas de Onís",
+        "finish": "Potes"
+    },
+    "Stage 8": {
+        "stage_no": 8,
+        "gpx_file": "Etappe8.gpx",
+        "name": "Stage 8",
+        "start": "Potes",
+        "finish": "Unquera"
+    }
+}
