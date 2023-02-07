@@ -32,11 +32,11 @@ def create_map_figure(srcs):
     p.axis.visible = False
 
     maptile = xyz.MapBox(
-        id = "mapbox/streets-v12",
+        id = "mapbox/streets-v11",
         accessToken = config.MAPBOX_TOKEN
         )
 
-    p.add_tile(maptile)
+    p.add_tile(maptile, retina = True)
 
     p.add_tools(TapTool(name = 'taptool'))
 
