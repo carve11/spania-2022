@@ -1,4 +1,2 @@
-# spania-2022
-Bike trip in northern Spain in 2022. The trip is shown on this [map](https://carve11.github.io/spania-2022/) which has been made in Python 
-using the [Bokeh](https://docs.bokeh.org/en/latest/) library. One can click on the routes on the map in order to 
-get a detailed elevation profile. Does not work well on a touch device. 
+# Bike trip in Spain 2022
+Bike trip in Northern Spain in 2022 ([map](https://carve11.github.io/spania-2022/)) using Python to create the visualization of the trip. Mainly use of [Bokeh](https://docs.bokeh.org/en/latest/) library with some Javascript code, `gpxpy` to parse bike computer GPX files, `Jinja2` templating. One can click on the routes on the map in order to get a detailed elevation profile.
