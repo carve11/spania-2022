@@ -187,3 +187,19 @@ button:hover {
   margin-top: 0px;
   margin-left: 62px;
 }
+
+.footer {
+  margin-top: 1.6rem;
+  border-top: 1px solid #444444cf;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.footer img {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-content: center;
+  margin-left: 4px;
+}

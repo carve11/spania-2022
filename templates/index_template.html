@@ -2,6 +2,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="static/css/styles.css" rel="stylesheet">
   <script type="text/javascript" src="static/js/functions.js"></script>
+  <script type="text/javascript" src="static/js/scalebar_functions.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.8.1/proj4.min.js"></script>
 {% endblock %}
 {% block contents %}
 <div class="container">
@@ -56,6 +58,12 @@
       </span>
     </div>
     {% endfor %}
+  </div>
+  <div class="footer">
+    <span>Code available on GitHub</span>
+    <a href="https://github.com/carve11/spania-2022" target="_blank">
+      <img src="static/img/github-mark.png" alt="GitHub">
+    </a>
   </div>
 </div>
 {% endblock %}
