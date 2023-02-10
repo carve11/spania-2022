@@ -245,6 +245,11 @@ function stageProfileHighlight(stage) {
 function runBkScript() {
   if ((window.Bokeh.documents[0] !== undefined)) {
       updateElevationSrc('Total');
+
+      // need to add an onload JS function that executes the Bokeh CustomJS
+      // script for the scale bar otherwise no scalebar present initially
+      let bkScript = window.Bokeh.documents[0].get_model_by_name('mapScaleScript');
+      bkScript.execute();
   } else {
       setTimeout(runBkScript, 1000);
   }
