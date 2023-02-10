@@ -2,13 +2,13 @@ import pandas as pd
 import numpy as np
 import os
 from bokeh.document import Document
-from bokeh.io import curdoc
 from bokeh.embed import file_html
 from bokeh.resources import CDN
 from bokeh.layouts import row, column
 import visualization as viz
 from functions import lnglat_to_meters, read_meta_data, read_index_template
 from functions import read_and_process_track
+from mapscalebar import MapScaleBar
 
 FOUTPUT = "index.html"
 TRACKS_METADATA = 'stage_meta_data.json'
@@ -164,11 +164,11 @@ def app():
         srcs['elevation'], srcs['elevation_stage'],
         srcs['marker_elevation'], 'elevation'
         )
+    MapScaleBar(p_map)
     
     viz.add_callback(srcs, p_elevation, p_map)
 
     doc = Document()
-    doc = curdoc()
     doc.add_root(p_map)
     doc.add_root(p_elevation)
     template_variables = {'stages': route_data}
