@@ -1,19 +1,22 @@
+:root {
+  --common-font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 html {
   font-family: sans-serif;
   font-size: 62.5%; 
   -ms-text-size-adjust: 100%; 
-  -webkit-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 0; 
   font-size: 1.6em; 
   line-height: 1.5;
   font-weight: 300;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
-  color: #444444;
-  margin: 0px;
-  background-color: whitesmoke;
-  padding-top: 0px;
+  font-family: var(--common-font);
+  --bokeh-base-font: var(--common-font);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,11 +27,11 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { 
   font-size: 3.6rem;
-  letter-spacing: -.08rem;
+  letter-spacing: -.05rem;
 }
 h2 {
   font-size: 3.0rem;
-  letter-spacing: -.05rem;
+  letter-spacing: -.03rem;
 }
 h3 {
   font-size: 2.4rem;
@@ -41,7 +44,7 @@ h4 {
 }
 h5 {
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0px; 
 }
 
@@ -51,6 +54,7 @@ p {
 
 button  {
   font-family: inherit;
+  font-size: 1.4rem;
   margin: 0;
   overflow: visible;
   text-transform: none;
@@ -71,58 +75,64 @@ button:hover {
   margin: auto;
   display: flex;
   flex-direction: column;
-  padding: 0px 16px 16px 16px;
-}
-
-.map-container {
-  display: inline-block;
-  position: relative;
-  height: 600px;
-}
-
-.btn-group {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
-.map-btn {
-  position: relative;
-  width: 36px;
-  height: 36px;
-  background-color: #ffffffcf;
-  padding: 0px;
-  border: 2px solid #444444;
-  margin: 1px;
-}
-
-.map-btn img {
-  width: 24px;
-  height: 24px;
-}
-
-.profile-btn {
-  padding-left: 16px;
-  padding-right: 16px;
-  height: 36px;
-  border: 2px solid #444444;
-  background-color: white;
-}
-
-.profile-btn img {
-  width: 36px;
-}
-
-.profile-btn:focus {
-  box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
+  padding: 0px 16px;
 }
 
 .outline {
   border: 1px solid black;
   padding: 5px;
   background-color: white;
+}
+
+.elevation-plot-heading {
+  margin-top: 0px;
+  margin-left: 62px;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+.mapboxgl-popup-content {
+  font-family: var(--common-font);
+  font-size: 1.2rem;
+  font-weight: 300;
+  padding: 8px;
+}
+
+.map-container {
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+
+#location-marker {
+  display: none;
+  position: absolute;
+  z-index: 9;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+#svg-location-marker {
+  width: 16px;
+  height: 16px;
+}
+
+#svg-circle {
+  fill: yellow;
+  stroke: purple;
+  stroke-width: 2
+}
+
+#stage-label {
+  display: block;
+  position: absolute;
+  z-index: 9;
 }
 
 .stages-layout {
@@ -152,40 +162,21 @@ button:hover {
   columns: 225px 2;
 }
 
-.map-btn .tooltip {
-  visibility: hidden;
-  background-color: #444444cf;
-  width: 80px;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 4px 8px 6px 8px;
-  position: absolute;
-  z-index: 1;
-  top: 2px;
-  left: 130%;
-  font-size: 1.4rem;
-  line-height: normal;
+.profile-btn {
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 36px;
+  border: 2px solid #444444;
+  background-color: white;
 }
 
-.map-btn .tooltip::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent #444444cf transparent transparent;
+.profile-btn img {
+  width: 36px;
+  margin-right: 8px;
 }
 
-.map-btn:hover .tooltip {
-  visibility: visible;
-}
-
-.elevation-plot-heading {
-  margin-top: 0px;
-  margin-left: 62px;
+.profile-btn:focus {
+  box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 .footer {
