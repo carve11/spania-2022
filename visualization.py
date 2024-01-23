@@ -1,11 +1,13 @@
 # visualization.py
 from bokeh.plotting import figure
 from bokeh.models import ColumnDataSource, CustomJS, InlineStyleSheet
-from bokeh.models import HoverTool, PrintfTickFormatter
+from bokeh.models import HoverTool, PrintfTickFormatter, TapTool
 from bokeh.models import Range1d, HTMLLabel
 
 MAX_PLOT_WIDTH = 800
 FONTSIZE = '14px'
+LINECOLOR = 'darkgrey'
+PLOT_FILLCOLOR = 'linen'
 
 def elevation_plot(sources):
     '''
@@ -26,7 +28,7 @@ def elevation_plot(sources):
 
     profile_plot_styling(plot)
     profile_glyphs(plot, sources)
-    add_callback(plot)
+    add_callback(plot, sources)
 
     return plot
 
@@ -37,13 +39,14 @@ def profile_plot_styling(plot):
     plot.axis.minor_tick_line_color = None
     plot.outline_line_color = None
     plot.xaxis.axis_line_color = None
-    plot.axis.major_tick_line_color = plot.xgrid.grid_line_color
-    plot.yaxis.axis_line_color = plot.xgrid.grid_line_color
+    plot.axis.major_tick_line_color = LINECOLOR
+    plot.yaxis.axis_line_color = None
     plot.axis.major_tick_in = 0
     plot.axis.major_label_text_font_size = FONTSIZE
-    plot.background_fill_color = "#efefef"
-    plot.ygrid.grid_line_color = 'lightgrey'
-    plot.xgrid.grid_line_color = 'lightgrey'
+    plot.background_fill_color = PLOT_FILLCOLOR
+    plot.border_fill_color = PLOT_FILLCOLOR
+    plot.ygrid.grid_line_color = LINECOLOR
+    plot.xgrid.grid_line_color = None
     plot.min_border_right = 10
 
 def profile_glyphs(plot, sources):
@@ -51,12 +54,12 @@ def profile_glyphs(plot, sources):
     Glyphs for elevation profile plot
     '''
     # glyph for elevation profile
-    plot.varea(
+    r_varea = plot.varea(
         x = 'x',
         y1 = 'y1',
         y2 = 'y2',
         fill_color = '#F07353',
-        fill_alpha = 0.6,
+        fill_alpha = 0.8,
         source = sources['elevation'],
         name = 'r_elevation'
         )
@@ -67,7 +70,7 @@ def profile_glyphs(plot, sources):
         y1 = 'y1',
         y2 = 'y2',
         fill_color = '#C03127',
-        fill_alpha = 0.5,
+        fill_alpha = 0.6,
         source = sources['elevation_stage'],
         name = 'r_elevation_stage'
         )
@@ -80,14 +83,18 @@ def profile_glyphs(plot, sources):
         source = sources['elevation']
         )
 
-    hover = HoverTool(
+    plot.add_tools(HoverTool(
         tooltips = None, 
         mode = 'vline',
         line_policy = 'none',
         renderers = [r_ghost],
         name = 'elevation_hover'
-    )
-    plot.add_tools(hover)
+    ))
+
+    plot.add_tools(TapTool(
+        renderers = [r_varea],
+        name = 'taptool'
+    ))
 
     # elevation, distance marker 
     plot.circle(
@@ -133,13 +140,25 @@ def profile_glyphs(plot, sources):
         )
     plot.add_layout(elevation_stage_label)
 
-def add_callback(plot):
+def add_callback(plot, sources):
     hover_cb = CustomJS(
         code = '''
           elevationHover(cb_data);
         '''
     )
     plot.select(name = 'elevation_hover')[0].callback = hover_cb
+
+    tap_cb_code = '''
+      selectStageElevationPlot(src);
+    '''
+
+    taptool_callback = CustomJS(
+        args = {
+          'src': sources['elevation']
+          },
+          code = tap_cb_code
+    )
+    plot.select(name = 'taptool')[0].callback = taptool_callback
 
 def sources():
     src = {}

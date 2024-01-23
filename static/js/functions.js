@@ -23,11 +23,19 @@ function initializeDocument(token, geojson, elevation_data, stage_summary) {
 
 function addMapboxMap(token) {
   mapboxgl.accessToken =  token;
+  var mq = window.matchMedia( "(min-width: 600px)" );
+  var zoom = 7;
+  if (mq.matches){
+      zoom = 7;
+  } else {
+      zoom = 6;
+  };
+
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/outdoors-v12',
     center: [-5.7, 43.25],
-    zoom: 7
+    zoom: zoom
   });
 
   return map;
@@ -432,6 +440,17 @@ function locationMarkerMap(coord, show) {
   elm.style.display = "block";
   elm.style.left = `${scr_units.x-elm_offset}px`;
   elm.style.top = `${scr_units.y-elm_offset}px`;
+}
+
+function selectStageElevationPlot(src) {
+  const idx = src.inspected.line_indices;
+
+  if ((globals.stage_viewed_elevation !== 'Total') || (idx.length === 0)) {
+    return;
+  }
+  
+  const stage = src.data['stage'][idx];
+  updateElevationSrc(stage);
 }
 
 function arrayFill(length, value) {
