@@ -1,5 +1,6 @@
 :root {
   --common-font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --stages-layout-margin: 16px;
 }
 
 html {
@@ -136,8 +137,14 @@ svg {
 }
 
 .stages-layout {
-  margin-left: 16px;
-  margin-right: 16px;
+  margin-left: var(--stages-layout-margin);
+  margin-right: var(--stages-layout-margin);
+}
+
+@media window and (max-width: 600px) {
+  :root {
+    --stages-layout-margin: 0px;
+  }
 }
 
 .stage-layout {
