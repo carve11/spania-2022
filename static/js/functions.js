@@ -144,13 +144,26 @@ function addMapData(map, geojson) {
     removeMapHoverPopup(map, popup);
   });
 
+  let dbl = false;
+
+  map.on('dblclick', (e) => {
+    dbl = true;
+  });
+
   map.on('click', (e) => {
     // reset elevation profile plot to show all stages
     const stage_layer_feat = map.queryRenderedFeatures(e.point, {layers: ['stages_ly']});
     if (stage_layer_feat.length > 0) {
       return;
     }
-    updateElevationSrc('Total');
+    
+    // check whether doubleclick was triggered, hence zoom map
+    dbl = false;
+    setTimeout(() => {
+      if (!dbl) {
+        updateElevationSrc('Total');
+      }
+    }, 500)
   });
 
   map.on('click', 'stages_ly', (e) => {
